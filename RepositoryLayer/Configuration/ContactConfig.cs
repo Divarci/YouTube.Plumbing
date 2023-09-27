@@ -16,6 +16,16 @@ namespace RepositoryLayer.Configuration
             builder.Property(x => x.Email).IsRequired().HasMaxLength(100);
             builder.Property(x => x.Call).IsRequired().HasMaxLength(17);
             builder.Property(x => x.Map).IsRequired();
+
+            builder.HasData(new Contact
+            {
+                Id = 1,
+                Call = "1246556956",
+                Email = "test@try.com",
+                Location = "Iron streen, Brave Avenue, KD1 2CF, London",
+                Map = "TestLink Here"
+
+            });
         }
     }
 }
