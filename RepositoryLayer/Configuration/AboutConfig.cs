@@ -19,6 +19,8 @@ namespace RepositoryLayer.Configuration
             builder.Property(x => x.HoursOfSupport).IsRequired().HasMaxLength(5);
             builder.Property(x => x.HardWorkers).IsRequired().HasMaxLength(5);
 
+
+
           
 
 

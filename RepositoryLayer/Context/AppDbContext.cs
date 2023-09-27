@@ -10,7 +10,7 @@ namespace RepositoryLayer.Context
         {
         }
 
-        protected AppDbContext()
+        public AppDbContext()
         {
         }
 
