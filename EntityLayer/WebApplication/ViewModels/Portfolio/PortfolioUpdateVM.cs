@@ -2,7 +2,7 @@
 
 namespace EntityLayer.WebApplication.ViewModels.Portfolio
 {
-    public class PorfolioUpateVM
+    public class PortfolioUpdateVM
     {
         public int Id { get; set; }
         public string? UpdatedDate { get; set; }
