@@ -10,4 +10,17 @@
     <ProjectReference Include="..\RepositoryLayer\RepositoryLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="FluentValidation\" />
+    <Folder Include="Exception\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Filters\" />
+    <Folder Include="Middlewares\" />
+    <Folder Include="Messages\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+  </ItemGroup>
+
 </Project>
