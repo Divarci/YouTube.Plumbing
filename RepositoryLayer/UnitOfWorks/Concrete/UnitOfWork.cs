@@ -24,6 +24,11 @@ namespace RepositoryLayer.UnitOfWorks.Concrete
             await _context.SaveChangesAsync();
         }
 
+        public ValueTask DisposeAsync()
+        {
+            return _context.DisposeAsync();
+        }
+
         IGenericRepositories<T> IUnitOfWork.GetGenericRepository<T>()
         {
             return new GenericRepositories<T>(_context);
