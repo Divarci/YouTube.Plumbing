@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using EntityLayer.WebApplication.Entities;
-using EntityLayer.WebApplication.ViewModels.HomePage;
+using EntityLayer.WebApplication.ViewModels.Portfolio;
 
 namespace ServiceLayer.Automapper
 {
@@ -8,9 +8,9 @@ namespace ServiceLayer.Automapper
     {
         public PortfolioMapper()
         {
-            CreateMap<Portfolio, HomePageListVM>().ReverseMap();
-            CreateMap<Portfolio, HomePageAddVM>().ReverseMap();
-            CreateMap<Portfolio, HomePageUpdateVM>().ReverseMap();
+            CreateMap<Portfolio, PortfolioListVM>().ReverseMap();
+            CreateMap<Portfolio, PortfolioAddVM>().ReverseMap();
+            CreateMap<Portfolio, PortfolioUpdateVM>().ReverseMap();
         }
     }
 }
