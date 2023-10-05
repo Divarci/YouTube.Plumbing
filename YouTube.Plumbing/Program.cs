@@ -1,3 +1,4 @@
+using EntityLayer.Identity.Entities;
 using RepositoryLayer.Extensions;
 using ServiceLayer.Extensions;
 

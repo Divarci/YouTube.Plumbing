@@ -1,0 +1,61 @@
+﻿@model TestimonalAddVM
+@{
+    ViewData["Title"] = "AddTestimonal";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <h5 class="card-title">Add New Testimonal</h5>
+
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
+            <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Testimonal" asp-action="GetTestimonalList">Testimonals</a></li>
+            <li class="breadcrumb-item active">Add</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <!-- Floating Labels Form -->
+        <form asp-area="Admin" asp-controller="Testimonal" asp-action="AddTestimonal" method="post" class="row g-3" enctype="multipart/form-data">
+            <input type="hidden" asp-for="FileName" value="test" />
+            <input type="hidden" asp-for="FileType" value="test" />
+
+            <div class="col-md-6">
+                <div class="form-floating">
+                    <input asp-for="FullName" type="text" class="form-control" placeholder="Name">
+                    <label asp-for="FullName">Name</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-floating">
+                    <input asp-for="Title" type="text" class="form-control" placeholder="Title">
+                    <label asp-for="Title">Title</label>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-floating">
+                    <textarea asp-for="Comment" type="text" class="form-control" style="height:150px" placeholder="Comment"></textarea>
+                    <label asp-for="Comment">Comment</label>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-floating">
+                    <input asp-for="Photo" accept="image/*" type="file" class="form-control" placeholder="Photo">
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+        </form><!-- End floating Labels Form -->
+
+
+
+    </div>
+</div>
+

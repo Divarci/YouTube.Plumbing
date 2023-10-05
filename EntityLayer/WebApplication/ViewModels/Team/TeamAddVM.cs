@@ -1,4 +1,6 @@
-﻿namespace EntityLayer.WebApplication.ViewModels.Team
+﻿using Microsoft.AspNetCore.Http;
+
+namespace EntityLayer.WebApplication.ViewModels.Team
 {
     public class TeamAddVM
     {
@@ -10,5 +12,7 @@
         public string? LinkedIn { get; set; }
         public string? FaceBook { get; set; }
         public string? Instagram { get; set; }
+
+        public IFormFile Photo { get; set; } = null!;
     }
 }
