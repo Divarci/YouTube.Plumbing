@@ -1,21 +1,24 @@
 ﻿using EntityLayer.Identity.Entities;
+using EntityLayer.Identity.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RepositoryLayer.Context;
+using ServiceLayer.Helpers.Identity.EmailHelper;
 
 namespace ServiceLayer.Extensions.Identity
 {
     public static class IdentityExtensions
     {
-        public static IServiceCollection LoadIdentityExtensions(this IServiceCollection services)
+        public static IServiceCollection LoadIdentityExtensions(this IServiceCollection services, IConfiguration config)
         {
             services.AddIdentity<AppUser, AppRole>(opt =>
             {
                 opt.Password.RequiredLength = 10;
                 opt.Password.RequireNonAlphanumeric = true;
                 opt.Password.RequiredUniqueChars = 2;
-                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(3);
+                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(60);
                 opt.Lockout.MaxFailedAccessAttempts = 3;
 
             })
@@ -34,7 +37,14 @@ namespace ServiceLayer.Extensions.Identity
                 opt.ExpireTimeSpan = TimeSpan.FromMinutes(60);
             });
 
+            services.Configure<DataProtectionTokenProviderOptions>(opt =>
+            {
+                opt.TokenLifespan = TimeSpan.FromMinutes(60);
+            });
 
+            services.AddScoped<IEmailSendMethod, EmailSendMethod>();
+
+            services.Configure<GmailInformationVM>(config.GetSection("EmailSettings"));
 
             return services;
         }

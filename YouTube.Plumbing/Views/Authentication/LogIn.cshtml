@@ -1,4 +1,5 @@
-﻿@model SignUpVM
+﻿@model LogInVM
+
 @{
     Layout = null;
 }
@@ -38,6 +39,7 @@
 
 <body>
 
+
     <main>
         <div class="container">
 
@@ -51,24 +53,17 @@
                                 <div class="card-body">
 
                                     <div class="pt-4 pb-2">
-                                        <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
-                                        <p class="text-center small">Enter your personal details to create account</p>
+                                        <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
+                                        <p class="text-center small">Enter your username & password to login</p>
                                     </div>
                                     @if (!string.IsNullOrEmpty(ViewBag.Result))
                                     {
                                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                            <div asp-validation-summary="All"></div> 
+                                            <div asp-validation-summary="All"></div>
                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                         </div>
-                                    }      
-                                   
-                                    <form class="row g-3" asp-controller="Authentication" asp-action="SignUp" method="post" >
-                                        
-                                        <div class="col-12">
-                                            <label asp-for="Username" class="form-label">Username</label>
-                                            <input asp-for="Username" type="text" class="form-control" >
-                                            <span asp-validation-for="Username" class="text-danger"></span>
-                                        </div>
+                                    }
+                                    <form class="row g-3" asp-controller="Authentication" asp-action="LogIn" asp-route-returnUrl="@Context.Request.Query["ReturnUrl"]" method="post">
 
                                         <div class="col-12">
                                             <label asp-for="Email" class="form-label">Email</label>
@@ -80,24 +75,22 @@
                                             <input asp-for="Password" type="password" class="form-control">
                                             <span asp-validation-for="Password" class="text-danger"></span>
                                         </div>
-
-
                                         <div class="col-12">
-                                            <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
-                                            <input asp-for="ConfirmPassword" type="password" class="form-control">
-                                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                                        </div>
-                                       
-                                        <div class="col-12">
-                                            <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                                            <div class="form-check">
+                                                <input asp-for="RememberMe" class="form-check-input" type="checkbox" value="true">
+                                                <label asp-for="RememberMe" class="form-check-label">Remember me</label>
+                                            </div>
                                         </div>
                                         <div class="col-12">
-                                            <p class="small mb-0">Already have an account? <a asp-controller="Authentication" asp-action="LogIn">Log in</a></p>
+                                            <button class="btn btn-primary w-100" type="submit">Login</button>
+                                        </div>
+                                        <div class="col-12">
+                                            <p class="small mb-0">Don't have account? <a href="pages-register.html">Create an account</a></p>
                                         </div>
                                     </form>
 
                                 </div>
-                            </div>
+                            </div>                           
 
                         </div>
                     </div>

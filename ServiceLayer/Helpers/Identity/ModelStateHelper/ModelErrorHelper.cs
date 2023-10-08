@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace ServiceLayer.Helpers.Identity
+namespace ServiceLayer.Helpers.Identity.ModelStateHelper
 {
     public static class ModelErrorHelper
     {
