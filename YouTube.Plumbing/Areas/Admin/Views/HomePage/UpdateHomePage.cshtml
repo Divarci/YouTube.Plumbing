@@ -23,22 +23,26 @@
         <form asp-area="Admin" asp-controller="HomePage" asp-action="UpdateHomePage" method="post" class="row g-3">
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="RowVersion" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="col-md-12">
                 <div class="form-floating">
                     <input asp-for="Header" type="text" class="form-control" placeholder="Header">
+                    <span asp-validation-for="Header" class="text-danger"></span>
                     <label asp-for="Header">Header</label>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="form-floating">
                     <textarea asp-for="Description" type="text" class="form-control" placeholder="Description"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
                     <label asp-for="Description">Description</label>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="form-floating">
                     <input asp-for="VideoLink" type="text" class="form-control" placeholder="Video Link">
+                    <span asp-validation-for="VideoLink" class="text-danger"></span>
                     <label asp-for="VideoLink">Video Link</label>
                 </div>
             </div>

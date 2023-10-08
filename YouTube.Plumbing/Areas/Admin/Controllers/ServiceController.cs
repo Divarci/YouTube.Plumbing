@@ -1,4 +1,6 @@
 ﻿using EntityLayer.WebApplication.ViewModels.Service;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Services.WebApplication.Abstract;
 
@@ -8,13 +10,16 @@ namespace YouTube.Plumbing.Areas.Admin.Controllers
     public class ServiceController : Controller
     {
         private readonly IServiceService _serviceService;
+        private readonly IValidator<ServiceAddVM> _addValidator;
+        private readonly IValidator<ServiceUpdateVM> _updateValidator;
 
-        public ServiceController(IServiceService serviceService)
+        public ServiceController(IServiceService serviceService, IValidator<ServiceAddVM> addValidator, IValidator<ServiceUpdateVM> updateValidator)
         {
             _serviceService = serviceService;
+            _addValidator = addValidator;
+            _updateValidator = updateValidator;
         }
 
-       
         public async Task<IActionResult> GetServiceList()
         {
             var serviceList = await _serviceService.GetAllListAsync();
@@ -30,9 +35,18 @@ namespace YouTube.Plumbing.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> AddService(ServiceAddVM request)
         {
-            await _serviceService.AddServiceAsync(request);
-            return RedirectToAction("GetServiceList", "Service", new { Area = ("Admin") });
+            var validation = await _addValidator.ValidateAsync(request);
+            if (validation.IsValid)
+            {
+                await _serviceService.AddServiceAsync(request);
+                return RedirectToAction("GetServiceList", "Service", new { Area = ("Admin") });
+            }
+            validation.AddToModelState(this.ModelState);
+            return View();
+
         }
+
+
 
         [HttpGet]
         public async Task<IActionResult> UpdateService(int id)
@@ -44,9 +58,18 @@ namespace YouTube.Plumbing.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateService(ServiceUpdateVM request)
         {
-            await _serviceService.UpdateServiceAsync(request);
-            return RedirectToAction("GetServiceList", "Service", new { Area = ("Admin") });
+            var validation = await _updateValidator.ValidateAsync(request);
+            if (validation.IsValid)
+            {
+                await _serviceService.UpdateServiceAsync(request);
+                return RedirectToAction("GetServiceList", "Service", new { Area = ("Admin") });
+            }
+            validation.AddToModelState(this.ModelState);
+            return View();
+
         }
+
+
 
         public async Task<IActionResult> DeleteService(int id)
         {

@@ -1,4 +1,6 @@
 ﻿using EntityLayer.WebApplication.ViewModels.Testimonal;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Services.WebApplication.Abstract;
 
@@ -8,10 +10,14 @@ namespace YouTube.Plumbing.Areas.Admin.Controllers
     public class TestimonalController : Controller
     {
         private readonly ITestimonalService _testimonalService;
+        private readonly IValidator<TestimonalAddVM> _addValidator;
+        private readonly IValidator<TestimonalUpdateVM> _updateValidator;
 
-        public TestimonalController(ITestimonalService testimonalService)
+        public TestimonalController(ITestimonalService testimonalService, IValidator<TestimonalAddVM> addValidator, IValidator<TestimonalUpdateVM> updateValidator)
         {
             _testimonalService = testimonalService;
+            _addValidator = addValidator;
+            _updateValidator = updateValidator;
         }
 
         public async Task<IActionResult> GetTestimonalList()
@@ -29,8 +35,14 @@ namespace YouTube.Plumbing.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> AddTestimonal(TestimonalAddVM request)
         {
-            await _testimonalService.AddTestimonalAsync(request);
-            return RedirectToAction("GetTestimonalList", "Testimonal", new { Area = ("Admin") });
+            var validation = await _addValidator.ValidateAsync(request);
+            if (validation.IsValid)
+            {
+                await _testimonalService.AddTestimonalAsync(request);
+                return RedirectToAction("GetTestimonalList", "Testimonal", new { Area = ("Admin") });
+            }
+            validation.AddToModelState(this.ModelState);
+            return View();
         }
 
         [HttpGet]
@@ -43,8 +55,14 @@ namespace YouTube.Plumbing.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateTestimonal(TestimonalUpdateVM request)
         {
-            await _testimonalService.UpdateTestimonalAsync(request);
-            return RedirectToAction("GetTestimonalList", "Testimonal", new { Area = ("Admin") });
+            var validation = await _updateValidator.ValidateAsync(request);
+            if (validation.IsValid)
+            {
+                await _testimonalService.UpdateTestimonalAsync(request);
+                return RedirectToAction("GetTestimonalList", "Testimonal", new { Area = ("Admin") });
+            }
+            validation.AddToModelState(this.ModelState);
+            return View();
         }
 
         public async Task<IActionResult> DeleteTestimonal(int id)

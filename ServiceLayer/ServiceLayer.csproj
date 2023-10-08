@@ -11,19 +11,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Automapper\Identity\" />
     <Folder Include="Exception\Identity\" />
     <Folder Include="Exception\WebApplication\" />
-    <Folder Include="Extensions\Identity\" />
     <Folder Include="Extensions\WebApplication\" />
     <Folder Include="Filters\Identity\" />
     <Folder Include="Filters\WebApplication\" />
-    <Folder Include="FluentValidation\Identity\" />
-    <Folder Include="FluentValidation\WebAPplication\" />
-    <Folder Include="Helpers\Identity\" />
     <Folder Include="Helpers\WebApplication\" />
-    <Folder Include="Messages\Identity\" />
-    <Folder Include="Messages\WebApplication\" />
     <Folder Include="Middlewares\Identity\" />
     <Folder Include="Middlewares\WebApplication\" />
     <Folder Include="Services\Identity\Abstract\" />
@@ -32,6 +25,8 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.7.1" />
   </ItemGroup>
 
 </Project>

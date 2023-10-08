@@ -1,4 +1,3 @@
-using EntityLayer.Identity.Entities;
 using RepositoryLayer.Extensions;
 using ServiceLayer.Extensions;
 
@@ -26,6 +25,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 #pragma warning disable ASP0014

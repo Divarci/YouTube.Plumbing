@@ -22,28 +22,33 @@
         <form asp-area="Admin" asp-controller="Contact" asp-action="UpdateContact" method="post" class="row g-3">
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="RowVersion" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="col-md-12">
                 <div class="form-floating">
                     <input asp-for="Location" type="text" class="form-control" placeholder="Location">
+                    <span asp-validation-for="Location" class="text-danger"></span>
                     <label asp-for="Location">Location</label>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="form-floating">
-                    <textarea asp-for="Call" type="text" class="form-control" placeholder="Call"></textarea>
+                    <input asp-for="Call" type="text" class="form-control" placeholder="Call">
+                    <span asp-validation-for="Call" class="text-danger"></span>
                     <label asp-for="Call">Call</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating">
                     <input asp-for="Email" type="email" class="form-control" placeholder="Email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
                     <label asp-for="Email">Email</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating">
                     <input asp-for="Map" type="text" class="form-control" placeholder="Map">
+                    <span asp-validation-for="Map" class="text-danger"></span>
                     <label asp-for="Map">Map</label>
                 </div>
             </div>

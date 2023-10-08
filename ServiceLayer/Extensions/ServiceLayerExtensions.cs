@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.Extensions.DependencyInjection;
+using ServiceLayer.Extensions.Identity;
+using ServiceLayer.FluentValidation.WebAPplication.HomePageValidation;
 using System.Reflection;
 
 namespace ServiceLayer.Extensions
@@ -7,6 +11,8 @@ namespace ServiceLayer.Extensions
     {
         public static IServiceCollection LoadServiceLayerExtensions(this IServiceCollection services)
         {
+            services.LoadIdentityExtensions();
+
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             var types = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass && !x.IsAbstract && x.Name.EndsWith("Service"));
@@ -20,6 +26,13 @@ namespace ServiceLayer.Extensions
                     services.AddScoped(iServiceType, serviceType);
                 }
             }
+
+            services.AddFluentValidationAutoValidation(opt =>
+            {
+                opt.DisableDataAnnotationsValidation = true;
+            });
+
+            services.AddValidatorsFromAssemblyContaining<HomePageAddValidation>();
 
             return services;
         }

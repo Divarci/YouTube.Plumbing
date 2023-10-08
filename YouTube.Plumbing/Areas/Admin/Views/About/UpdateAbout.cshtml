@@ -20,6 +20,7 @@
     <div class="card-body">
         <!-- Floating Labels Form -->
         <form asp-area="Admin" asp-controller="About" asp-action="UpdateAbout" method="post" class="row g-3" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="RowVersion" />
             <input type="hidden" asp-for="FileName" value="test" />
@@ -28,35 +29,41 @@
                 <div class="form-floating">
                     <input asp-for="Header" type="text" class="form-control" placeholder="Header">
                     <label asp-for="Header">Header</label>
+                    <span asp-validation-for="Header" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="form-floating">
                     <textarea asp-for="Description" type="text" class="form-control" placeholder="Description"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
                     <label asp-for="Description">Description</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating">
                     <input asp-for="Clients" type="number" class="form-control" placeholder="Clients">
+                    <span asp-validation-for="Clients" class="text-danger"></span>
                     <label asp-for="Clients">Clients</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating">
                     <input asp-for="HoursOfSupport" type="number" class="form-control" placeholder="Hours Of Support">
+                    <span asp-validation-for="HoursOfSupport" class="text-danger"></span>
                     <label asp-for="HoursOfSupport">Hours Of Support</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating">
                     <input asp-for="HardWorkers" type="number" class="form-control" placeholder="HardWorkers">
+                    <span asp-validation-for="HardWorkers" class="text-danger"></span>
                     <label asp-for="HardWorkers">HardWorkers</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-floating">
                     <input asp-for="Projects" type="number" class="form-control" placeholder="Projects">
+                    <span asp-validation-for="Projects" class="text-danger"></span>
                     <label asp-for="Projects">Projects</label>
                 </div>
             </div>
