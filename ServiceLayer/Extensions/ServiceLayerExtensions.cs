@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ServiceLayer.Extensions.Identity;
 using ServiceLayer.FluentValidation.WebAPplication.HomePageValidation;
+using ServiceLayer.Helpers.Generic.Image;
 using System.Reflection;
 
 namespace ServiceLayer.Extensions
@@ -35,6 +36,8 @@ namespace ServiceLayer.Extensions
 
             services.AddValidatorsFromAssemblyContaining<HomePageAddValidation>();
 
+
+            services.AddScoped<IImageHelper, ImageHelper>();
             return services;
         }
     }

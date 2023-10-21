@@ -3,10 +3,11 @@ using EntityLayer.Identity.Entities;
 using EntityLayer.Identity.ViewModels;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using ServiceLayer.Helpers.Identity.EmailHelper;
 using ServiceLayer.Helpers.Identity.ModelStateHelper;
+using ServiceLayer.Services.Identity.Abstract;
 
 namespace YouTube.Plumbing.Controllers
 {
@@ -19,9 +20,10 @@ namespace YouTube.Plumbing.Controllers
         private readonly IValidator<ForgotPasswordVM> _forgotPasswordValidator;
         private readonly IValidator<ResetPasswordVM> _resetPasswordValidator;
         private readonly IMapper _iMapper;
-        private readonly IEmailSendMethod _emailSendMethod;
+        private readonly IAuthenticationCustomService _authenticationService;
 
-        public AuthenticationController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IValidator<SignUpVM> signUpValidator, IValidator<LogInVM> logInValidator, IValidator<ForgotPasswordVM> forgotPasswordValidator, IMapper iMapper, IEmailSendMethod emailSendMethod, IValidator<ResetPasswordVM> resetPasswordValidator)
+
+        public AuthenticationController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IValidator<SignUpVM> signUpValidator, IValidator<LogInVM> logInValidator, IValidator<ForgotPasswordVM> forgotPasswordValidator, IMapper iMapper, IValidator<ResetPasswordVM> resetPasswordValidator, IAuthenticationCustomService authenticationService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -29,8 +31,8 @@ namespace YouTube.Plumbing.Controllers
             _logInValidator = logInValidator;
             _forgotPasswordValidator = forgotPasswordValidator;
             _iMapper = iMapper;
-            _emailSendMethod = emailSendMethod;
             _resetPasswordValidator = resetPasswordValidator;
+            _authenticationService = authenticationService;
         }
 
         [HttpGet]
@@ -134,10 +136,8 @@ namespace YouTube.Plumbing.Controllers
                 return View();
             }
 
-            string resetToken = await _userManager.GeneratePasswordResetTokenAsync(hasUser);
-            var passwordResetLink = Url.Action("ResetPassword", "Authentication", new { userId = hasUser.Id, token = resetToken }, HttpContext.Request.Scheme);
+            await _authenticationService.CreateResetCredentialsAndSend(hasUser, HttpContext, Url, request);
 
-            await _emailSendMethod.SendPasswordResetLinkWithToken(passwordResetLink!, request.Email);
             return RedirectToAction("LogIn", "Authentication");
 
         }
@@ -193,6 +193,12 @@ namespace YouTube.Plumbing.Controllers
                 return RedirectToAction("ResetPassword", "Authentication", new { userId, token, errors });
             }
         }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
 
     }
 }

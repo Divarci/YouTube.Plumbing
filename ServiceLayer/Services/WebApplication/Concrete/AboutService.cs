@@ -5,6 +5,7 @@ using EntityLayer.WebApplication.ViewModels.AboutVM;
 using Microsoft.EntityFrameworkCore;
 using RepositoryLayer.Repositories.Abstract;
 using RepositoryLayer.UnitOfWorks.Abstract;
+using ServiceLayer.Helpers.Generic.Image;
 using ServiceLayer.Services.WebApplication.Abstract;
 
 namespace ServiceLayer.Services.WebApplication.Concrete
@@ -14,12 +15,14 @@ namespace ServiceLayer.Services.WebApplication.Concrete
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IGenericRepositories<About> _repository;
+        private readonly IImageHelper _imageHelper;
 
-        public AboutService(IUnitOfWork unitOfWork, IMapper mapper)
+        public AboutService(IUnitOfWork unitOfWork, IMapper mapper, IImageHelper imageHelper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _repository = _unitOfWork.GetGenericRepository<About>();
+            _imageHelper = imageHelper;
         }
 
 
@@ -34,6 +37,7 @@ namespace ServiceLayer.Services.WebApplication.Concrete
 
         public async Task AddAboutAsync(AboutAddVM request)
         {
+           
             var about = _mapper.Map<About>(request);
             await _repository.AddEntityAsync(about);
             await _unitOfWork.CommitAsync();

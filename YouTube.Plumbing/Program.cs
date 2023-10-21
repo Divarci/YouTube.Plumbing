@@ -9,7 +9,6 @@ builder.Services.AddControllersWithViews();
 builder.Services.LoadRepositoryLayerExtensions(builder.Configuration);
 builder.Services.LoadServiceLayerExtensions(builder.Configuration);
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -35,6 +34,11 @@ app.UseEndpoints(endpoint =>
         name: "Admin",
         areaName: "Admin",
         pattern: "Admin/{controller=Dashboard}/{action=Index}/{id?}");
+
+    endpoint.MapAreaControllerRoute(
+        name: "User",
+        areaName: "User",
+        pattern: "User/{controller=Dashboard}/{action=Index}/{id?}");
 
     endpoint.MapControllerRoute(
     name: "default",
