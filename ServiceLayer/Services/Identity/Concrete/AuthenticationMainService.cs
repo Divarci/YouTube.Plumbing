@@ -9,12 +9,12 @@ using ServiceLayer.Services.Identity.Abstract;
 
 namespace ServiceLayer.Services.Identity.Concrete
 {
-    public class AuthenticationCustomService : IAuthenticationCustomService
+    public class AuthenticationMainService : IAuthenticationMainService
     {
         private readonly IEmailSendMethod _email;
         private readonly UserManager<AppUser> _userManager;
 
-        public AuthenticationCustomService(IEmailSendMethod email, UserManager<AppUser> userManager)
+        public AuthenticationMainService(IEmailSendMethod email, UserManager<AppUser> userManager)
         {
             _email = email;
             _userManager = userManager;

@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Customization\WebApplication\" />
     <Folder Include="Exception\Identity\" />
     <Folder Include="Exception\WebApplication\" />
     <Folder Include="Extensions\WebApplication\" />
