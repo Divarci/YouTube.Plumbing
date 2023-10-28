@@ -3,8 +3,10 @@ using AutoMapper.QueryableExtensions;
 using EntityLayer.WebApplication.Entities;
 using EntityLayer.WebApplication.ViewModels.Service;
 using Microsoft.EntityFrameworkCore;
+using NToastNotify;
 using RepositoryLayer.Repositories.Abstract;
 using RepositoryLayer.UnitOfWorks.Abstract;
+using ServiceLayer.Messages.WebApplication;
 using ServiceLayer.Services.WebApplication.Abstract;
 
 namespace ServiceLayer.Services.WebApplication.Concrete
@@ -14,12 +16,15 @@ namespace ServiceLayer.Services.WebApplication.Concrete
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IGenericRepositories<Service> _repository;
+        private readonly IToastNotification _toasty;
+        private const string Section = "Service";
 
-        public ServiceService(IUnitOfWork unitOfWork, IMapper mapper)
+        public ServiceService(IUnitOfWork unitOfWork, IMapper mapper, IToastNotification toasty)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _repository = _unitOfWork.GetGenericRepository<Service>();
+            _toasty = toasty;
         }
 
 
@@ -36,6 +41,7 @@ namespace ServiceLayer.Services.WebApplication.Concrete
             var service = _mapper.Map<Service>(request);
             await _repository.AddEntityAsync(service);
             await _unitOfWork.CommitAsync();
+            _toasty.AddSuccessToastMessage(NotificationMessagesWebApplication.AddMessage(Section), new ToastrOptions { Title = NotificationMessagesWebApplication.SuccessedTitle });
         }
 
         public async Task DeleteServiceAsync(int id)
@@ -43,6 +49,7 @@ namespace ServiceLayer.Services.WebApplication.Concrete
             var service = await _repository.GetEntityByIdAsync(id);
             _repository.DeletetEntity(service);
             await _unitOfWork.CommitAsync();
+            _toasty.AddWarningToastMessage(NotificationMessagesWebApplication.DeleteMessage(Section), new ToastrOptions { Title = NotificationMessagesWebApplication.SuccessedTitle });
         }
 
         public async Task<ServiceUpdateVM> GetServiceById(int id)
@@ -56,6 +63,7 @@ namespace ServiceLayer.Services.WebApplication.Concrete
             var service = _mapper.Map<Service>(request);
             _repository.UpdatetEntity(service);
             await _unitOfWork.CommitAsync();
+            _toasty.AddInfoToastMessage(NotificationMessagesWebApplication.UpdateMessage(Section), new ToastrOptions { Title = NotificationMessagesWebApplication.SuccessedTitle });
         }
     }
 }

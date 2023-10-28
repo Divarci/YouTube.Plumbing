@@ -6,8 +6,10 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using NToastNotify;
 using ServiceLayer.Helpers.Generic.Image;
 using ServiceLayer.Helpers.Identity.ModelStateHelper;
+using ServiceLayer.Messages.Identity;
 using ServiceLayer.Services.Identity.Abstract;
 
 namespace YouTube.Plumbing.Areas.User.Controllers
@@ -19,12 +21,14 @@ namespace YouTube.Plumbing.Areas.User.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly IValidator<UserEditVM> _userEditValidator;
         private readonly IAuthenticationUserService _authenticationUserService;
+        private readonly IToastNotification _toasty;
 
-        public AuthenticationUserController(UserManager<AppUser> userManager, IValidator<UserEditVM> userEditValidator, IAuthenticationUserService authenticationUserService)
+        public AuthenticationUserController(UserManager<AppUser> userManager, IValidator<UserEditVM> userEditValidator, IAuthenticationUserService authenticationUserService, IToastNotification toasty)
         {
             _userManager = userManager;
             _userEditValidator = userEditValidator;
             _authenticationUserService = authenticationUserService;
+            _toasty = toasty;
         }
         [HttpGet]
         public async Task<ActionResult> UserEdit()
@@ -54,6 +58,7 @@ namespace YouTube.Plumbing.Areas.User.Controllers
             }
 
             ViewBag.Username = user!.UserName;
+            _toasty.AddInfoToastMessage(NotificationMessagesIdentity.UserEdit(user.UserName!), new ToastrOptions { Title = NotificationMessagesIdentity.SuccessedTitle });
 
             return RedirectToAction("Index","Dashboard",new { Area = "User" });
         }

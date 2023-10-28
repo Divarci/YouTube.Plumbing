@@ -22,6 +22,7 @@ namespace ServiceLayer.Extensions.Identity
                 opt.Password.RequiredUniqueChars = 2;
                 opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(60);
                 opt.Lockout.MaxFailedAccessAttempts = 3;
+                opt.User.RequireUniqueEmail = true;
 
             })
                 .AddRoleManager<RoleManager<AppRole>>()
@@ -44,7 +45,7 @@ namespace ServiceLayer.Extensions.Identity
 
             services.Configure<DataProtectionTokenProviderOptions>(opt =>
             {
-                opt.TokenLifespan = TimeSpan.FromMinutes(60);
+                opt.TokenLifespan = TimeSpan.FromSeconds(20);
             });
 
             services.AddScoped<IEmailSendMethod, EmailSendMethod>();

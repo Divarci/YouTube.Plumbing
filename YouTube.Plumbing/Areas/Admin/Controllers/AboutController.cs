@@ -2,6 +2,7 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
+using ServiceLayer.Filters.WebApplication;
 using ServiceLayer.Services.WebApplication.Abstract;
 
 namespace YouTube.Plumbing.Areas.Admin.Controllers
@@ -28,6 +29,7 @@ namespace YouTube.Plumbing.Areas.Admin.Controllers
             return View(aboutList);
         }
 
+        [ServiceFilter(typeof(AddAboutPreventationFilter))]
         [HttpGet]
         public IActionResult AddAbout()
         {

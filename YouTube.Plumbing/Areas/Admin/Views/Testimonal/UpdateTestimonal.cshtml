@@ -17,52 +17,60 @@
     </nav>
 </div>
 
-<div class="card">
-    <div class="card-body">
-        <!-- Floating Labels Form -->
-        <form asp-area="Admin" asp-controller="Testimonal" asp-action="UpdateTestimonal" method="post" class="row g-3" enctype="multipart/form-data">
-            <input type="hidden" asp-for="FileName" value="test" />
-            <input type="hidden" asp-for="FileType" value="test" />
-            <input type="hidden" asp-for="Id" value="test" />
-            <input type="hidden" asp-for="RowVersion" value="test" />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<!-- Card with an image on top -->
 
-            <div class="col-md-6">
-                <div class="form-floating">
-                    <input asp-for="FullName" type="text" class="form-control" placeholder="Name">
-                    <span asp-validation-for="FullName" class="text-danger"></span>
-                    <label asp-for="FullName">Name</label>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-floating">
-                    <input asp-for="Title" type="text" class="form-control" placeholder="Title">
-                    <span asp-validation-for="Title" class="text-danger"></span>
-                    <label asp-for="Title">Title</label>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="form-floating">
-                    <textarea asp-for="Comment" type="text" class="form-control" style="height:150px" placeholder="Comment"></textarea>
-                    <span asp-validation-for="Comment" class="text-danger"></span>
-                    <label asp-for="Comment">Comment</label>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="form-floating">
-                    <input asp-for="Photo" accept="image/*" type="file" class="form-control" placeholder="Photo">
-                </div>
-            </div>
-
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="reset" class="btn btn-secondary">Reset</button>
-            </div>
-        </form><!-- End floating Labels Form -->
+<div class="row">
 
 
+    <div class="col-lg-4 card">
+        <img src="~/images/@Model.FileName" class="card-img-top" alt="Testimonial">
 
     </div>
+
+    <div class="col-lg-8 card">
+        <div class="card-body">
+            <!-- Floating Labels Form -->
+            <form asp-area="Admin" asp-controller="Testimonal" asp-action="UpdateTestimonal" method="post" class="row g-3" enctype="multipart/form-data">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="RowVersion" />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input asp-for="FullName" type="text" class="form-control" placeholder="Name">
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                        <label asp-for="FullName">Name</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input asp-for="Title" type="text" class="form-control" placeholder="Title">
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                        <label asp-for="Title">Title</label>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-floating">
+                        <textarea asp-for="Comment" type="text" class="form-control" style="height:150px" placeholder="Comment"></textarea>
+                        <span asp-validation-for="Comment" class="text-danger"></span>
+                        <label asp-for="Comment">Comment</label>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-floating">
+                        <input asp-for="Photo" accept="image/*" type="file" class="form-control" placeholder="Photo">
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+            </form><!-- End floating Labels Form -->
+
+
+
+        </div>
+    </div>
+
 </div>
-
-

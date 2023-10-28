@@ -10,8 +10,8 @@
     <meta content="Plumber, Plumbing, Refurishment" name="keywords">
 
     <!-- Favicons -->
-    <link href="~/Admin/assets/img/favicon.png" rel="icon">
-    <link href="~/Admin/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="~/Admin/assets/img/Scroll.png" rel="icon">
+    <link href="~/Admin/assets/img/Scroll.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -38,11 +38,20 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.html" class="logo d-flex align-items-center">
-                <img src="~/Admin/assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">NiceAdmin</span>
+                <img src="~/Admin/assets/img/Scroll.png" alt="User Panel">
+                <span class="d-none d-lg-block">@User.Identity!.Name!</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
+
+
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+                <li> <a class="btn btn-outline-info me-2" asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-house-door"></i></a></li>
+                <li> <a class="btn btn-outline-warning me-2" asp-area="Admin" asp-controller="Dashboard" asp-action="Index"><i class="bi bi-sliders"></i></a></li>
+            </ul>
+        </nav><!-- End Icons Navigation -->
+
 
     </header><!-- End Header -->
     <!-- ======= Sidebar ======= -->
@@ -101,6 +110,10 @@
     <!-- Template Main JS File -->
     <script src="~/Admin/assets/js/main.js"></script>
 
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await Component.InvokeAsync("NToastNotify")
 </body>
 
 </html>

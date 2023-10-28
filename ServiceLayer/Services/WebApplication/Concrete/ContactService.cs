@@ -3,8 +3,10 @@ using AutoMapper.QueryableExtensions;
 using EntityLayer.WebApplication.Entities;
 using EntityLayer.WebApplication.ViewModels.Contact;
 using Microsoft.EntityFrameworkCore;
+using NToastNotify;
 using RepositoryLayer.Repositories.Abstract;
 using RepositoryLayer.UnitOfWorks.Abstract;
+using ServiceLayer.Messages.WebApplication;
 using ServiceLayer.Services.WebApplication.Abstract;
 
 namespace ServiceLayer.Services.WebApplication.Concrete
@@ -14,12 +16,15 @@ namespace ServiceLayer.Services.WebApplication.Concrete
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IGenericRepositories<Contact> _repository;
+        private readonly IToastNotification _toasty;
+        private const string Section = "Contact section";
 
-        public ContactService(IUnitOfWork unitOfWork, IMapper mapper)
+        public ContactService(IUnitOfWork unitOfWork, IMapper mapper, IToastNotification toasty)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _repository = _unitOfWork.GetGenericRepository<Contact>();
+            _toasty = toasty;
         }
 
 
@@ -37,6 +42,7 @@ namespace ServiceLayer.Services.WebApplication.Concrete
             var contact = _mapper.Map<Contact>(request);
             await _repository.AddEntityAsync(contact);
             await _unitOfWork.CommitAsync();
+            _toasty.AddSuccessToastMessage(NotificationMessagesWebApplication.AddMessage(Section), new ToastrOptions { Title = NotificationMessagesWebApplication.SuccessedTitle });
         }
 
         public async Task DeleteContactAsync(int id)
@@ -44,6 +50,7 @@ namespace ServiceLayer.Services.WebApplication.Concrete
             var contact = await _repository.GetEntityByIdAsync(id);
             _repository.DeletetEntity(contact);
             await _unitOfWork.CommitAsync();
+            _toasty.AddWarningToastMessage(NotificationMessagesWebApplication.DeleteMessage(Section), new ToastrOptions { Title = NotificationMessagesWebApplication.SuccessedTitle });
         }
 
         public async Task<ContactUpdateVM> GetContactById(int id)
@@ -57,6 +64,7 @@ namespace ServiceLayer.Services.WebApplication.Concrete
             var contact = _mapper.Map<Contact>(request);
             _repository.UpdatetEntity(contact);
             await _unitOfWork.CommitAsync();
+            _toasty.AddInfoToastMessage(NotificationMessagesWebApplication.UpdateMessage(Section), new ToastrOptions { Title = NotificationMessagesWebApplication.SuccessedTitle });
         }
     }
 }

@@ -3,10 +3,11 @@ using EntityLayer.Identity.Entities;
 using EntityLayer.Identity.ViewModels;
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using NToastNotify;
 using ServiceLayer.Helpers.Identity.ModelStateHelper;
+using ServiceLayer.Messages.Identity;
 using ServiceLayer.Services.Identity.Abstract;
 
 namespace YouTube.Plumbing.Controllers
@@ -21,9 +22,10 @@ namespace YouTube.Plumbing.Controllers
         private readonly IValidator<ResetPasswordVM> _resetPasswordValidator;
         private readonly IMapper _iMapper;
         private readonly IAuthenticationMainService _authenticationService;
+        private readonly IToastNotification _toasty;
 
 
-        public AuthenticationController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IValidator<SignUpVM> signUpValidator, IValidator<LogInVM> logInValidator, IValidator<ForgotPasswordVM> forgotPasswordValidator, IMapper iMapper, IValidator<ResetPasswordVM> resetPasswordValidator, IAuthenticationMainService authenticationService)
+        public AuthenticationController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IValidator<SignUpVM> signUpValidator, IValidator<LogInVM> logInValidator, IValidator<ForgotPasswordVM> forgotPasswordValidator, IMapper iMapper, IValidator<ResetPasswordVM> resetPasswordValidator, IAuthenticationMainService authenticationService, IToastNotification toasty)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -33,6 +35,7 @@ namespace YouTube.Plumbing.Controllers
             _iMapper = iMapper;
             _resetPasswordValidator = resetPasswordValidator;
             _authenticationService = authenticationService;
+            _toasty = toasty;
         }
 
         [HttpGet]
@@ -60,6 +63,7 @@ namespace YouTube.Plumbing.Controllers
                 return View();
             }
 
+            _toasty.AddSuccessToastMessage(NotificationMessagesIdentity.SignUp(user.UserName!), new ToastrOptions { Title = NotificationMessagesIdentity.SuccessedTitle });
             return RedirectToAction("LogIn", "Authentication");
         }
 
@@ -75,7 +79,7 @@ namespace YouTube.Plumbing.Controllers
         [HttpPost]
         public async Task<IActionResult> LogIn(LogInVM request, string? returnUrl = null)
         {
-            returnUrl = returnUrl ?? Url.Action("Index", "Dashboard", new { Area = "Admin" });
+            returnUrl = returnUrl ?? Url.Action("Index", "Dashboard", new { Area = "User" });
 
             var validation = await _logInValidator.ValidateAsync(request);
             if (!validation.IsValid)
@@ -95,6 +99,7 @@ namespace YouTube.Plumbing.Controllers
             var logInResult = await _signInManager.PasswordSignInAsync(hasUser, request.Password, request.RememberMe, true);
             if (logInResult.Succeeded)
             {
+                _toasty.AddSuccessToastMessage(NotificationMessagesIdentity.LogInSuccess, new ToastrOptions { Title = NotificationMessagesIdentity.SuccessedTitle });
                 return Redirect(returnUrl!);
             }
 
@@ -136,6 +141,7 @@ namespace YouTube.Plumbing.Controllers
                 return View();
             }
 
+            _toasty.AddSuccessToastMessage(NotificationMessagesIdentity.PasswordResetSuccess, new ToastrOptions { Title = NotificationMessagesIdentity.SuccessedTitle });
             await _authenticationService.CreateResetCredentialsAndSend(hasUser, HttpContext, Url, request);
 
             return RedirectToAction("LogIn", "Authentication");
@@ -166,6 +172,7 @@ namespace YouTube.Plumbing.Controllers
 
             if (userId == null || token == null)
             {
+                _toasty.AddErrorToastMessage(NotificationMessagesIdentity.TokenValidationError, new ToastrOptions { Title = NotificationMessagesIdentity.FailedTitle });
                 return RedirectToAction("LogIn", "Authentication");
             }
 
@@ -179,12 +186,14 @@ namespace YouTube.Plumbing.Controllers
             var hasUser = await _userManager.FindByIdAsync(userId.ToString()!);
             if(hasUser == null)
             {
+                _toasty.AddErrorToastMessage(NotificationMessagesIdentity.UserError, new ToastrOptions { Title = NotificationMessagesIdentity.FailedTitle });
                 return RedirectToAction("LogIn", "Authentication");
             }
 
             var resetPasswordResult = await _userManager.ResetPasswordAsync(hasUser!,token.ToString()!,request.Password);
             if (resetPasswordResult.Succeeded)
             {
+                _toasty.AddSuccessToastMessage(NotificationMessagesIdentity.PasswordChangeSuccess, new ToastrOptions { Title = NotificationMessagesIdentity.SuccessedTitle });
                 return RedirectToAction("LogIn", "Authentication");
             }
             else
