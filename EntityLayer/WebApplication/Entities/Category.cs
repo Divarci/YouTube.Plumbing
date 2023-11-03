@@ -6,7 +6,7 @@ namespace EntityLayer.WebApplication.Entities
     {
         public string Name { get; set; } = null!;
 
-        List<Portfolio> Portfolios { get; set; } = null!;
+        public List<Portfolio> Portfolios { get; set; } = null!;
        
     }
 }

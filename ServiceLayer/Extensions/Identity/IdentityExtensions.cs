@@ -45,7 +45,7 @@ namespace ServiceLayer.Extensions.Identity
 
             services.Configure<DataProtectionTokenProviderOptions>(opt =>
             {
-                opt.TokenLifespan = TimeSpan.FromSeconds(20);
+                opt.TokenLifespan = TimeSpan.FromMinutes(10);
             });
 
             services.AddScoped<IEmailSendMethod, EmailSendMethod>();

@@ -2,6 +2,7 @@
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NToastNotify;
 using ServiceLayer.Extensions.Identity;
 using ServiceLayer.Extensions.WebApplication;
 using ServiceLayer.FluentValidation.WebAPplication.HomePageValidation;
@@ -43,6 +44,9 @@ namespace ServiceLayer.Extensions
 
 
             services.AddScoped<IImageHelper, ImageHelper>();
+
+
+
             return services;
         }
     }

@@ -59,6 +59,12 @@
             </tbody>
         </table>
         <!-- End Table with hoverable rows -->
-        <a asp-area="Admin" asp-controller="Contact" asp-action="AddContact" class="btn btn-success btn-sm">Add Contact</a>
+        @if (!Model.Any())
+        {
+            <a asp-area="Admin" asp-controller="Contact" asp-action="AddContact" class="btn btn-success btn-sm">Add Contact</a>
+
+        }
+
     </div>
 </div>
+

@@ -192,7 +192,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             Clients = 5,
-                            CreatedDate = "21/10/2023",
+                            CreatedDate = "03/11/2023",
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In nibh mauris cursus mattis molestie a iaculis at erat. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Suspendisse sed nisi lacus sed viverra tellus in. Amet volutpat consequat mauris nunc congue. Diam maecenas sed enim ut sem. Et magnis dis parturient montes nascetur. Morbi tempus iaculis urna id volutpat lacus laoreet. Urna condimentum mattis pellentesque id nibh tortor id. Fames ac turpis egestas maecenas pharetra convallis posuere. Nunc mi ipsum faucibus vitae aliquet.",
                             FileName = "test",
                             FileType = "test",
@@ -240,13 +240,13 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = "21/10/2023",
+                            CreatedDate = "03/11/2023",
                             Name = "Projects"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = "21/10/2023",
+                            CreatedDate = "03/11/2023",
                             Name = "SiteWorks"
                         });
                 });
@@ -302,7 +302,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             Call = "1246556956",
-                            CreatedDate = "21/10/2023",
+                            CreatedDate = "03/11/2023",
                             Email = "test@try.com",
                             Location = "Iron streen, Brave Avenue, KD1 2CF, London",
                             Map = "TestLink Here"
@@ -354,7 +354,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = "21/10/2023",
+                            CreatedDate = "03/11/2023",
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In nibh mauris cursus mattis molestie a iaculis at erat. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam.",
                             Header = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                             VideoLink = "Test Video Link"
@@ -411,7 +411,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            CreatedDate = "21/10/2023",
+                            CreatedDate = "03/11/2023",
                             FileName = "Test",
                             FileType = "test",
                             Title = "Test Picture"
@@ -420,7 +420,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 2,
                             CategoryId = 1,
-                            CreatedDate = "21/10/2023",
+                            CreatedDate = "03/11/2023",
                             FileName = "Test2",
                             FileType = "test2",
                             Title = "Test Picture2"
@@ -429,7 +429,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 3,
                             CategoryId = 2,
-                            CreatedDate = "21/10/2023",
+                            CreatedDate = "03/11/2023",
                             FileName = "Test3",
                             FileType = "test3",
                             Title = "Test Picture3"
@@ -438,7 +438,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 4,
                             CategoryId = 2,
-                            CreatedDate = "21/10/2023",
+                            CreatedDate = "03/11/2023",
                             FileName = "Test4",
                             FileType = "test4",
                             Title = "Test Picture4"
@@ -491,7 +491,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = "21/10/2023",
+                            CreatedDate = "03/11/2023",
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In nibh mauris cursus mattis molestie a iaculis at erat. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam.",
                             Icon = "bi bi-service1",
                             Name = "Plumbing Service 1"
@@ -499,7 +499,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = "21/10/2023",
+                            CreatedDate = "03/11/2023",
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In nibh mauris cursus mattis molestie a iaculis at erat. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam.",
                             Icon = "bi bi-service2",
                             Name = "Plumbing Service 2"
@@ -507,7 +507,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = "21/10/2023",
+                            CreatedDate = "03/11/2023",
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In nibh mauris cursus mattis molestie a iaculis at erat. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam.",
                             Icon = "bi bi-service3",
                             Name = "Plumbing Service 3"
@@ -557,7 +557,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = "21/10/2023",
+                            CreatedDate = "03/11/2023",
                             FaceBook = "testFacebook",
                             Instagram = "testInstagram"
                         });
@@ -624,7 +624,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = "21/10/2023",
+                            CreatedDate = "03/11/2023",
                             FaceBook = "facebook",
                             FileName = "test",
                             FileType = "test",
@@ -689,7 +689,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             Comment = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In nibh mauris cursus mattis molestie a iaculis at erat. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam.",
-                            CreatedDate = "21/10/2023",
+                            CreatedDate = "03/11/2023",
                             FileName = "test",
                             FileType = "test",
                             FullName = "Merlyn Monroe",
@@ -699,7 +699,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 2,
                             Comment = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In nibh mauris cursus mattis molestie a iaculis at erat. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam.",
-                            CreatedDate = "21/10/2023",
+                            CreatedDate = "03/11/2023",
                             FileName = "test",
                             FileType = "test",
                             FullName = "Jackie Chan",
@@ -709,7 +709,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 3,
                             Comment = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In nibh mauris cursus mattis molestie a iaculis at erat. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam.",
-                            CreatedDate = "21/10/2023",
+                            CreatedDate = "03/11/2023",
                             FileName = "test",
                             FileType = "test",
                             FullName = "Bruce Wills",
@@ -837,9 +837,9 @@ namespace RepositoryLayer.Migrations
             modelBuilder.Entity("EntityLayer.WebApplication.Entities.Portfolio", b =>
                 {
                     b.HasOne("EntityLayer.WebApplication.Entities.Category", "Category")
-                        .WithMany()
+                        .WithMany("Portfolios")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Category");
@@ -894,6 +894,11 @@ namespace RepositoryLayer.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("EntityLayer.WebApplication.Entities.Category", b =>
+                {
+                    b.Navigation("Portfolios");
                 });
 
             modelBuilder.Entity("EntityLayer.WebApplication.Entities.SocialMedia", b =>

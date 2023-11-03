@@ -1,4 +1,5 @@
-﻿using EntityLayer.WebApplication.ViewModels.AboutVM;
+﻿using EntityLayer.WebApplication.Entities;
+using EntityLayer.WebApplication.ViewModels.AboutVM;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
@@ -29,7 +30,7 @@ namespace YouTube.Plumbing.Areas.Admin.Controllers
             return View(aboutList);
         }
 
-        [ServiceFilter(typeof(AddAboutPreventationFilter))]
+        [ServiceFilter(typeof(GenericAddPreventationFilter<About>))]
         [HttpGet]
         public IActionResult AddAbout()
         {
@@ -51,6 +52,7 @@ namespace YouTube.Plumbing.Areas.Admin.Controllers
 
         }
 
+        [ServiceFilter(typeof(GenericNotFoundFilter<About>))]
         [HttpGet]
         public async Task<IActionResult> UpdateAbout(int id)
         {

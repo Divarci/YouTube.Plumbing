@@ -36,7 +36,7 @@ namespace ServiceLayer.Services.WebApplication.Concrete
 
         public async Task<List<AboutListVM>> GetAllListAsync()
         {
-            var aboutListVM = await _repository.GetAlltEntityList().ProjectTo<AboutListVM>(_mapper.ConfigurationProvider).ToListAsync();
+            var aboutListVM = await _repository.GetAlltEntityList().ProjectTo<AboutListVM>(_mapper.ConfigurationProvider).ToListAsync();            
 
             return aboutListVM;
         }

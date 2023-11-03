@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using EntityLayer.WebApplication.Entities;
+using Microsoft.Extensions.DependencyInjection;
 using ServiceLayer.Filters.WebApplication;
+using System.Reflection;
 
 namespace ServiceLayer.Extensions.WebApplication
 {
@@ -8,9 +10,12 @@ namespace ServiceLayer.Extensions.WebApplication
         public static IServiceCollection LoadWebApplicationExtensions(this IServiceCollection services)
         {
 
-            services.AddScoped(typeof(AddAboutPreventationFilter));
+            services.AddScoped(typeof(GenericAddPreventationFilter<>));       
+            services.AddScoped(typeof(GenericNotFoundFilter<>));
+          
 
             return services;
+
         }
     }
 }

@@ -54,7 +54,12 @@
             </tbody>
         </table>
         <!-- End Table with hoverable rows -->
-        <a asp-area="Admin" asp-controller="HomePage" asp-action="AddHomePage" class="btn btn-success btn-sm">Add HomePage</a>
+        @if (!Model.Any())
+        {
+            <a asp-area="Admin" asp-controller="HomePage" asp-action="AddHomePage" class="btn btn-success btn-sm">Add HomePage</a>
+
+        }
+
     </div>
 </div>
 
