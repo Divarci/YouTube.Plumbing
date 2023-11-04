@@ -3,10 +3,12 @@ using AutoMapper.QueryableExtensions;
 using CoreLayer.Enumerators;
 using EntityLayer.WebApplication.Entities;
 using EntityLayer.WebApplication.ViewModels.AboutVM;
+using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using NToastNotify;
 using RepositoryLayer.Repositories.Abstract;
 using RepositoryLayer.UnitOfWorks.Abstract;
+using ServiceLayer.Exception.WebApplication;
 using ServiceLayer.Helpers.Generic.Image;
 using ServiceLayer.Messages.WebApplication;
 using ServiceLayer.Services.WebApplication.Abstract;
@@ -91,7 +93,12 @@ namespace ServiceLayer.Services.WebApplication.Concrete
            
             var about = _mapper.Map<About>(request);
             _repository.UpdatetEntity(about);
-            await _unitOfWork.CommitAsync();
+            var result = await _unitOfWork.CommitAsync();
+            if (!result)
+            {
+                _imageHelper.DeleteImage(request.FileName);
+                throw new ClientSideExceptions(ExceptionMessages.ConcurencyException);
+            }
 
             if(request.Photo != null)
             {

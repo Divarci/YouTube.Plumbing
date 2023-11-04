@@ -6,7 +6,7 @@ namespace EntityLayer.WebApplication.ViewModels.AboutVM
     public class AboutListVM
     {
         public int Id { get; set; }
-        public string CreatedDate { get; set; } = DateTime.Now.ToString("d");
+        public string CreatedDate { get; set; } = null!;
         public string? UpdatedDate { get; set; }
 
 

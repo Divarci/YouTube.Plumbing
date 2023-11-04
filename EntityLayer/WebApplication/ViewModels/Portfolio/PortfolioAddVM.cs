@@ -13,5 +13,7 @@ namespace EntityLayer.WebApplication.ViewModels.Portfolio
 
         public int CategoryId { get; set; }
         public CategoryAddVM Category { get; set; } = null!;
+
+        public IList<CategoryListVM> CategoryList { get; set; } = null!;
     }
 }

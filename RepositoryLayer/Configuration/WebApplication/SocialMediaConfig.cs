@@ -15,6 +15,7 @@ namespace RepositoryLayer.Configuration.WebApplication
             builder.HasData(new SocialMedia
             {
                 Id = 1,
+                CreatedDate = "05/05/2025",
                 FaceBook = "testFacebook",
                 Instagram = "testInstagram",
             });

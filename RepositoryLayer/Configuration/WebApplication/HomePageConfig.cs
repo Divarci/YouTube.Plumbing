@@ -19,6 +19,7 @@ namespace RepositoryLayer.Configuration.WebApplication
             builder.HasData(new HomePage
             {
                 Id = 1,
+                CreatedDate = "05/05/2025",
                 Header = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In nibh mauris cursus mattis molestie a iaculis at erat. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam.",
                 VideoLink = "Test Video Link",

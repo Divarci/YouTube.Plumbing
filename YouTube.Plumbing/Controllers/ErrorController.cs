@@ -16,8 +16,8 @@ namespace YouTube.Plumbing.Controllers
             if (exceptions is ClientSideExceptions)
                 return View(new ErrorVM(exceptions.Message,401));
 
-            if (exceptions is DbUpdateConcurrencyException)
-                return View(new ErrorVM("Your data has been changed. Please try again later.", 401));
+            //if (exceptions is DbUpdateConcurrencyException)
+            //    return View(new ErrorVM("Your data has been changed. Please try again later.", 401));
 
             if (exceptions.InnerException is SqlException sqlException && sqlException.Number == 547)
                 return View(new ErrorVM("You have to delete all relevant data before to move on.", 401));

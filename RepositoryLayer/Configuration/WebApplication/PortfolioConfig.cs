@@ -21,6 +21,7 @@ namespace RepositoryLayer.Configuration.WebApplication
             builder.HasData(new Portfolio
             {
                 Id = 1,
+                CreatedDate = "05/05/2025",
                 CategoryId = 1,
                 FileName = "Test",
                 FileType = "test",
@@ -29,6 +30,7 @@ namespace RepositoryLayer.Configuration.WebApplication
             }, new Portfolio
             {
                 Id = 2,
+                CreatedDate = "05/05/2025",
                 CategoryId = 1,
                 FileName = "Test2",
                 FileType = "test2",
@@ -37,6 +39,7 @@ namespace RepositoryLayer.Configuration.WebApplication
             }, new Portfolio
             {
                 Id = 3,
+                CreatedDate = "05/05/2025",
                 CategoryId = 2,
                 FileName = "Test3",
                 FileType = "test3",
@@ -45,6 +48,7 @@ namespace RepositoryLayer.Configuration.WebApplication
             }, new Portfolio
             {
                 Id = 4,
+                CreatedDate = "05/05/2025",
                 CategoryId = 2,
                 FileName = "Test4",
                 FileType = "test4",

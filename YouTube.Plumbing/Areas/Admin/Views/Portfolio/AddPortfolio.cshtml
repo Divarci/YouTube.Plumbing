@@ -32,9 +32,9 @@
             </div>
             <div class="col-md-12">
                 <div class="form-floating">
-                    <input asp-for="Category.Name" type="text" class="form-control" placeholder="Category Name">
-                    <span asp-validation-for="Category.Name" class="text-danger"></span>
-                    <label asp-for="Category.Name">Call</label>
+                    <select asp-for="CategoryId" asp-items="@(new SelectList(Model.CategoryList,"Id","Name"))" class="form-control" placeholder="Category Name"></select>
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                    <label asp-for="CategoryId">Call</label>
                 </div>
             </div>
             <div class="col-md-12">

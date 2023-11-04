@@ -20,6 +20,7 @@ namespace RepositoryLayer.Configuration.WebApplication
             builder.HasData(new Team
             {
                 Id = 1,
+                CreatedDate = "05/05/2025",
                 FullName = "John Black",
                 Title = "Professor",
                 FaceBook = "facebook",
