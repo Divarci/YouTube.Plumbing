@@ -10,12 +10,12 @@ namespace RepositoryLayer.Configuration.Identity
         {
             builder.HasData(new AppUserRole
             {
-                UserId = "2A9459B8-FADB-4EE7-9424-F34A6AEB5BCD",
-                RoleId = "A790A698-8058-4FB6-BBBB-63123D01B4D4"
+                UserId = Guid.Parse("070A9212-D4A9-44DA-8479-4EC813B63621").ToString(),
+                RoleId = Guid.Parse("9B67832B-7091-48E8-AA0A-F1B3BAECA418").ToString()
             }, new AppUserRole
             {
-                UserId = "5D596359-CCD9-40DB-9442-74BEB060584A",
-                RoleId = "3CD80FB7-0AFC-4C63-B15E-4F67C8EAFAF2"
+                UserId = Guid.Parse("6B0E483C-EBAE-4ED3-827E-8ED27F7D9131").ToString(),
+                RoleId = Guid.Parse("AFFEDC34-9713-423A-880E-4A61CEEFB7B1").ToString()
             });
         }
     }

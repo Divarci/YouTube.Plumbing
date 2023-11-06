@@ -354,8 +354,8 @@ namespace RepositoryLayer.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "3cd80fb7-0afc-4c63-b15e-4f67c8eafaf2", "c4934b56-4cdc-4938-9315-488ca6f54bc2", "Member", "MEMBER" },
-                    { "a790a698-8058-4fb6-bbbb-63123d01b4d4", "3d2fd2be-8e5e-4197-bdae-af66edecf354", "SuperAdmin", "SUPERADMIN" }
+                    { "9b67832b-7091-48e8-aa0a-f1b3baeca418", "eaa18caa-44a8-4b73-bd72-1aec51bceedf", "SuperAdmin", "SUPERADMIN" },
+                    { "affedc34-9713-423a-880e-4a61ceefb7b1", "a0710810-3ece-47fc-9901-4d88d52d469c", "Member", "MEMBER" }
                 });
 
             migrationBuilder.InsertData(
@@ -363,8 +363,8 @@ namespace RepositoryLayer.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FileName", "FileType", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "2a9459b8-fadb-4ee7-9424-f34a6aeb5bcd", 0, "0ec0b48b-290d-41c7-812c-97d9e9a8cd9f", "test.video.lesson@gmail.com", false, null, null, false, null, "TEST.VIDEO.LESSON@GMAIL.COM", "TESTADMIN", "AQAAAAIAAYagAAAAEK9rpXRCB+8BMQJliMG1WMDuvp+8cS+LAxbvFFgFgb1ILBQC9zRV6sclbrXR6oyrXA==", null, false, "aefd3147-a6db-4587-a1dd-3ffd4f273a9a", false, "TestAdmin" },
-                    { "5d596359-ccd9-40db-9442-74beb060584a", 0, "34776801-48bc-4a2c-b63e-941caefbd4dd", "test.video.lesson2@gmail.com", false, null, null, false, null, "TEST.VIDEO.LESSON2@GMAIL.COM", "TESTMEMBER", "AQAAAAIAAYagAAAAEMWng/kG4M2aftv6TObgKMwye5THXATVn2/dKkzOxs/hMof/hOSrLovQGAGlaLPS9g==", null, false, "f0cf61eb-3689-40dc-8198-a5e776b80b48", false, "TestMember" }
+                    { "070a9212-d4a9-44da-8479-4ec813b63621", 0, "d8214a22-64cc-4ab8-aec7-a405c76ea8a4", "test.video.lesson@gmail.com", false, null, null, false, null, "TEST.VIDEO.LESSON@GMAIL.COM", "TESTADMIN", "AQAAAAIAAYagAAAAEG0sQ2KYM3fRn2u8JvcaH/kwnx2wRv55lzf5xTad3mffW7Pa6Icwc4wnVasQ2ortDA==", null, false, "73c2b1be-f448-4c47-9012-d957124e10e7", false, "TestAdmin" },
+                    { "6b0e483c-ebae-4ed3-827e-8ed27f7d9131", 0, "ee0e2473-3f35-4179-9b4f-d84c80a66abf", "test.video.lesson2@gmail.com", false, null, null, false, null, "TEST.VIDEO.LESSON2@GMAIL.COM", "TESTMEMBER", "AQAAAAIAAYagAAAAEKtcdxK2WJaX473XS88uUgaUIVyrOvzOEKnADTnJhx2rJgtw/lYeRx1MioEn1WBAlg==", null, false, "81231597-55a3-4ab8-b595-92a50cac8760", false, "TestMember" }
                 });
 
             migrationBuilder.InsertData(
@@ -420,6 +420,15 @@ namespace RepositoryLayer.Migrations
                 table: "Abouts",
                 columns: new[] { "Id", "Clients", "CreatedDate", "Description", "FileName", "FileType", "HardWorkers", "Header", "HoursOfSupport", "Projects", "SocialMediaId", "UpdatedDate" },
                 values: new object[] { 1, 5, "05/05/2025", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In nibh mauris cursus mattis molestie a iaculis at erat. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Suspendisse sed nisi lacus sed viverra tellus in. Amet volutpat consequat mauris nunc congue. Diam maecenas sed enim ut sem. Et magnis dis parturient montes nascetur. Morbi tempus iaculis urna id volutpat lacus laoreet. Urna condimentum mattis pellentesque id nibh tortor id. Fames ac turpis egestas maecenas pharetra convallis posuere. Nunc mi ipsum faucibus vitae aliquet.", "test", "test", 3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 150, 5, 1, null });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId", "Discriminator" },
+                values: new object[,]
+                {
+                    { "9b67832b-7091-48e8-aa0a-f1b3baeca418", "070a9212-d4a9-44da-8479-4ec813b63621", "AppUserRole" },
+                    { "affedc34-9713-423a-880e-4a61ceefb7b1", "6b0e483c-ebae-4ed3-827e-8ed27f7d9131", "AppUserRole" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Portfolios",

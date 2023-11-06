@@ -15,6 +15,9 @@ builder.Services.AddControllersWithViews().AddNToastNotifyToastr(new ToastrOptio
 builder.Services.LoadRepositoryLayerExtensions(builder.Configuration);
 builder.Services.LoadServiceLayerExtensions(builder.Configuration);
 
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

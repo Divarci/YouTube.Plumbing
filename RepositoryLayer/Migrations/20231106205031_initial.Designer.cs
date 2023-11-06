@@ -12,7 +12,7 @@ using RepositoryLayer.Context;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231105215622_initial")]
+    [Migration("20231106205031_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -54,15 +54,15 @@ namespace RepositoryLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a790a698-8058-4fb6-bbbb-63123d01b4d4",
-                            ConcurrencyStamp = "3d2fd2be-8e5e-4197-bdae-af66edecf354",
+                            Id = "9b67832b-7091-48e8-aa0a-f1b3baeca418",
+                            ConcurrencyStamp = "eaa18caa-44a8-4b73-bd72-1aec51bceedf",
                             Name = "SuperAdmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
-                            Id = "3cd80fb7-0afc-4c63-b15e-4f67c8eafaf2",
-                            ConcurrencyStamp = "c4934b56-4cdc-4938-9315-488ca6f54bc2",
+                            Id = "affedc34-9713-423a-880e-4a61ceefb7b1",
+                            ConcurrencyStamp = "a0710810-3ece-47fc-9901-4d88d52d469c",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         });
@@ -141,33 +141,33 @@ namespace RepositoryLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2a9459b8-fadb-4ee7-9424-f34a6aeb5bcd",
+                            Id = "070a9212-d4a9-44da-8479-4ec813b63621",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0ec0b48b-290d-41c7-812c-97d9e9a8cd9f",
+                            ConcurrencyStamp = "d8214a22-64cc-4ab8-aec7-a405c76ea8a4",
                             Email = "test.video.lesson@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST.VIDEO.LESSON@GMAIL.COM",
                             NormalizedUserName = "TESTADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEK9rpXRCB+8BMQJliMG1WMDuvp+8cS+LAxbvFFgFgb1ILBQC9zRV6sclbrXR6oyrXA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEG0sQ2KYM3fRn2u8JvcaH/kwnx2wRv55lzf5xTad3mffW7Pa6Icwc4wnVasQ2ortDA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "aefd3147-a6db-4587-a1dd-3ffd4f273a9a",
+                            SecurityStamp = "73c2b1be-f448-4c47-9012-d957124e10e7",
                             TwoFactorEnabled = false,
                             UserName = "TestAdmin"
                         },
                         new
                         {
-                            Id = "5d596359-ccd9-40db-9442-74beb060584a",
+                            Id = "6b0e483c-ebae-4ed3-827e-8ed27f7d9131",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "34776801-48bc-4a2c-b63e-941caefbd4dd",
+                            ConcurrencyStamp = "ee0e2473-3f35-4179-9b4f-d84c80a66abf",
                             Email = "test.video.lesson2@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST.VIDEO.LESSON2@GMAIL.COM",
                             NormalizedUserName = "TESTMEMBER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMWng/kG4M2aftv6TObgKMwye5THXATVn2/dKkzOxs/hMof/hOSrLovQGAGlaLPS9g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKtcdxK2WJaX473XS88uUgaUIVyrOvzOEKnADTnJhx2rJgtw/lYeRx1MioEn1WBAlg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f0cf61eb-3689-40dc-8198-a5e776b80b48",
+                            SecurityStamp = "81231597-55a3-4ab8-b595-92a50cac8760",
                             TwoFactorEnabled = false,
                             UserName = "TestMember"
                         });
@@ -889,6 +889,18 @@ namespace RepositoryLayer.Migrations
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUserRole<string>");
 
                     b.HasDiscriminator().HasValue("AppUserRole");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "070a9212-d4a9-44da-8479-4ec813b63621",
+                            RoleId = "9b67832b-7091-48e8-aa0a-f1b3baeca418"
+                        },
+                        new
+                        {
+                            UserId = "6b0e483c-ebae-4ed3-827e-8ed27f7d9131",
+                            RoleId = "affedc34-9713-423a-880e-4a61ceefb7b1"
+                        });
                 });
 
             modelBuilder.Entity("EntityLayer.WebApplication.Entities.About", b =>

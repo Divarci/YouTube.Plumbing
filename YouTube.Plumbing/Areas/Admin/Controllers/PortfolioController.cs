@@ -2,12 +2,14 @@
 using EntityLayer.WebApplication.ViewModels.Portfolio;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Filters.WebApplication;
 using ServiceLayer.Services.WebApplication.Abstract;
 
 namespace YouTube.Plumbing.Areas.Admin.Controllers
 {
+    [Authorize(Policy = "AdminObserver")]
     [Area("Admin")]
     public class PortfolioController : Controller
     {
@@ -75,6 +77,7 @@ namespace YouTube.Plumbing.Areas.Admin.Controllers
             return View();
         }
 
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> DeletePortfolio(int id)
         {
             await _portfolioService.DeletePortfolioAsync(id);

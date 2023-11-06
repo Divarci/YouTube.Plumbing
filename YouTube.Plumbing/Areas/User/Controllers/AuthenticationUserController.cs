@@ -14,21 +14,23 @@ using ServiceLayer.Services.Identity.Abstract;
 
 namespace YouTube.Plumbing.Areas.User.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Member,SuperAdmin")]
     [Area("User")]
     public class AuthenticationUserController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signinManager;
         private readonly IValidator<UserEditVM> _userEditValidator;
         private readonly IAuthenticationUserService _authenticationUserService;
         private readonly IToastNotification _toasty;
 
-        public AuthenticationUserController(UserManager<AppUser> userManager, IValidator<UserEditVM> userEditValidator, IAuthenticationUserService authenticationUserService, IToastNotification toasty)
+        public AuthenticationUserController(UserManager<AppUser> userManager, IValidator<UserEditVM> userEditValidator, IAuthenticationUserService authenticationUserService, IToastNotification toasty, SignInManager<AppUser> signinManager)
         {
             _userManager = userManager;
             _userEditValidator = userEditValidator;
             _authenticationUserService = authenticationUserService;
             _toasty = toasty;
+            _signinManager = signinManager;
         }
         [HttpGet]
         public async Task<ActionResult> UserEdit()
@@ -61,6 +63,12 @@ namespace YouTube.Plumbing.Areas.User.Controllers
             _toasty.AddInfoToastMessage(NotificationMessagesIdentity.UserEdit(user.UserName!), new ToastrOptions { Title = NotificationMessagesIdentity.SuccessedTitle });
 
             return RedirectToAction("Index","Dashboard",new { Area = "User" });
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signinManager.SignOutAsync();
+            return Redirect("/Home/Index");
         }
     }
 }

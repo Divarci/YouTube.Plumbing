@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace YouTube.Plumbing.Areas.User.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Member,SuperAdmin")]
     [Area("User")]
     public class DashboardController : Controller
     {

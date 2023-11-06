@@ -2,12 +2,14 @@
 using EntityLayer.WebApplication.ViewModels.Team;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Filters.WebApplication;
 using ServiceLayer.Services.WebApplication.Abstract;
 
 namespace YouTube.Plumbing.Areas.Admin.Controllers
 {
+    [Authorize(Policy = "AdminObserver")]
     [Area("Admin")]
     public class TeamController : Controller
     {
@@ -67,6 +69,7 @@ namespace YouTube.Plumbing.Areas.Admin.Controllers
             return View();
         }
 
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> DeleteTeam(int id)
         {
             await _teamService.DeleteTeamAsync(id);

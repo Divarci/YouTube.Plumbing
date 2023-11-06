@@ -2,12 +2,14 @@
 using EntityLayer.WebApplication.ViewModels.Service;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Filters.WebApplication;
 using ServiceLayer.Services.WebApplication.Abstract;
 
 namespace YouTube.Plumbing.Areas.Admin.Controllers
 {
+    [Authorize(Policy = "AdminObserver")]
     [Area("Admin")]
     public class ServiceController : Controller
     {
@@ -72,7 +74,7 @@ namespace YouTube.Plumbing.Areas.Admin.Controllers
         }
 
 
-
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> DeleteService(int id)
         {
             await _serviceService.DeleteServiceAsync(id);

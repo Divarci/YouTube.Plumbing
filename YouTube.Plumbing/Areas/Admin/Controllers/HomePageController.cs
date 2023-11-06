@@ -2,12 +2,14 @@
 using EntityLayer.WebApplication.ViewModels.HomePage;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Filters.WebApplication;
 using ServiceLayer.Services.WebApplication.Abstract;
 
 namespace YouTube.Plumbing.Areas.Admin.Controllers
 {
+    [Authorize(Policy = "AdminObserver")]
     [Area("Admin")]
     public class HomePageController : Controller
     {
@@ -70,6 +72,7 @@ namespace YouTube.Plumbing.Areas.Admin.Controllers
             return View();
         }
 
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> DeleteHomePage(int id)
         {
             await _homePageService.DeleteHomePageAsync(id);

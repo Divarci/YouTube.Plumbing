@@ -2,11 +2,7 @@
 
 namespace EntityLayer.Identity.Entities
 {
-    public class AppUserRole : IdentityUserRole<string>
+    public class AppUserClaim : IdentityUserClaim<string>
     {
-
-        
     }
-
-    
 }

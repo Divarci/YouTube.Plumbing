@@ -12,8 +12,8 @@ using RepositoryLayer.Context;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231105215736_assignRoles")]
-    partial class assignRoles
+    [Migration("20231106210851_addClaim")]
+    partial class addClaim
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,15 +54,15 @@ namespace RepositoryLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a790a698-8058-4fb6-bbbb-63123d01b4d4",
-                            ConcurrencyStamp = "8c9e905a-263d-4eeb-9949-79c597244b71",
+                            Id = "9b67832b-7091-48e8-aa0a-f1b3baeca418",
+                            ConcurrencyStamp = "3d447b49-d7a0-467d-aa03-8280a80f3eb2",
                             Name = "SuperAdmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
-                            Id = "3cd80fb7-0afc-4c63-b15e-4f67c8eafaf2",
-                            ConcurrencyStamp = "186446b5-cb92-4724-9a05-d4579e703acd",
+                            Id = "affedc34-9713-423a-880e-4a61ceefb7b1",
+                            ConcurrencyStamp = "351d4dea-21f4-4b9c-8831-7dd930ea227a",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         });
@@ -141,33 +141,33 @@ namespace RepositoryLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2a9459b8-fadb-4ee7-9424-f34a6aeb5bcd",
+                            Id = "070a9212-d4a9-44da-8479-4ec813b63621",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "306f35c6-4aa5-4a76-b0de-f520d5a2115b",
+                            ConcurrencyStamp = "fb9ee921-1793-46b9-ab01-2373693fd07a",
                             Email = "test.video.lesson@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST.VIDEO.LESSON@GMAIL.COM",
                             NormalizedUserName = "TESTADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMOG9ruBvKkn/evRRTGRV9/EVnd8NMi3TFhR7b0Oh810MTbXD5Nc5ocDa+DvDvqeQg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHfp4WmjE2goOFbabYyLVdxc/eJFVilBLL7AcNaZKjkQSHslmu6Jp0Vr7nEh/W2zng==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "404313c2-4842-4fb7-82e6-184ecc105762",
+                            SecurityStamp = "983c06b7-27da-4d91-905b-713e2b714e34",
                             TwoFactorEnabled = false,
                             UserName = "TestAdmin"
                         },
                         new
                         {
-                            Id = "5d596359-ccd9-40db-9442-74beb060584a",
+                            Id = "6b0e483c-ebae-4ed3-827e-8ed27f7d9131",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9b4d12dc-f1f9-40db-be6c-73c383ac9fb1",
+                            ConcurrencyStamp = "e907e3e6-4869-40b9-a381-686737e94915",
                             Email = "test.video.lesson2@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST.VIDEO.LESSON2@GMAIL.COM",
                             NormalizedUserName = "TESTMEMBER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBnqHUQnn+2/yrhd/hEp/y8YgIPFzkmDbdafWoyQmJY7z7z6jKvzfDavhN9DX+lhYQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPxGx2iSs17wlQ1vReGnqPMxh1Fsgvs80uVO5Ydl6Wvhsy4owrSQxrxgIXnbv34ToQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fb06bed3-6c39-43a3-9185-9bdfb6380355",
+                            SecurityStamp = "8e60273e-13fd-4719-9b96-9d74082f883a",
                             TwoFactorEnabled = false,
                             UserName = "TestMember"
                         });
@@ -809,6 +809,10 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -818,6 +822,10 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("AspNetUserClaims", (string)null);
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUserClaim<string>");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
@@ -884,6 +892,22 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("EntityLayer.Identity.Entities.AppUserClaim", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>");
+
+                    b.HasDiscriminator().HasValue("AppUserClaim");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ClaimType = "AdminObserverExpireDate",
+                            ClaimValue = "06/11/2023",
+                            UserId = "6b0e483c-ebae-4ed3-827e-8ed27f7d9131"
+                        });
+                });
+
             modelBuilder.Entity("EntityLayer.Identity.Entities.AppUserRole", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUserRole<string>");
@@ -893,13 +917,13 @@ namespace RepositoryLayer.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "2A9459B8-FADB-4EE7-9424-F34A6AEB5BCD",
-                            RoleId = "A790A698-8058-4FB6-BBBB-63123D01B4D4"
+                            UserId = "070a9212-d4a9-44da-8479-4ec813b63621",
+                            RoleId = "9b67832b-7091-48e8-aa0a-f1b3baeca418"
                         },
                         new
                         {
-                            UserId = "5D596359-CCD9-40DB-9442-74BEB060584A",
-                            RoleId = "3CD80FB7-0AFC-4C63-B15E-4F67C8EAFAF2"
+                            UserId = "6b0e483c-ebae-4ed3-827e-8ed27f7d9131",
+                            RoleId = "affedc34-9713-423a-880e-4a61ceefb7b1"
                         });
                 });
 
