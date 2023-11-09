@@ -59,7 +59,7 @@ namespace YouTube.Plumbing.Areas.User.Controllers
                 return View();
             }
 
-            ViewBag.Username = user!.UserName;
+            ViewBag.Id = user!.Id;
             _toasty.AddInfoToastMessage(NotificationMessagesIdentity.UserEdit(user.UserName!), new ToastrOptions { Title = NotificationMessagesIdentity.SuccessedTitle });
 
             return RedirectToAction("Index","Dashboard",new { Area = "User" });

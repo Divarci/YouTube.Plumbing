@@ -1,6 +1,7 @@
 using NToastNotify;
 using RepositoryLayer.Extensions;
 using ServiceLayer.Extensions;
+using ServiceLayer.Middlewares.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,7 +31,8 @@ if (!app.Environment.IsDevelopment())
 
 }
 
-
+//app.UseStatusCodePagesWithRedirects("/Error/PageNotFound");
+app.UseStatusCodePagesWithReExecute("/Error/PageNotFound");
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -39,6 +41,9 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseMiddleware<SecurityStampCheck>();
+
 
 #pragma warning disable ASP0014
 app.UseEndpoints(endpoint =>

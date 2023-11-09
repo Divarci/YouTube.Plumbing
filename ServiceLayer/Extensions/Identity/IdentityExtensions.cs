@@ -63,7 +63,12 @@ namespace ServiceLayer.Extensions.Identity
                     policy.AddRequirements(new AdminObserverRequirement());
                 });
             });
-                        
+
+            services.Configure<SecurityStampValidatorOptions>(opt =>
+            {
+                opt.ValidationInterval = TimeSpan.FromMinutes(30);
+            });
+
             return services;
         }
     }

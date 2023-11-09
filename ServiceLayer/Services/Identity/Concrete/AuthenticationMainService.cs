@@ -1,5 +1,4 @@
-﻿using Azure.Core;
-using EntityLayer.Identity.Entities;
+﻿using EntityLayer.Identity.Entities;
 using EntityLayer.Identity.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -26,5 +25,6 @@ namespace ServiceLayer.Services.Identity.Concrete
             var passwordResetLink = url.Action("ResetPassword", "Authentication", new { userId = user.Id, token = resetToken }, context.Request.Scheme);
             await _email.SendPasswordResetLinkWithToken(passwordResetLink!, request.Email);
         }
+
     }
 }

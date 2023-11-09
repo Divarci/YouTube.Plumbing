@@ -14,6 +14,9 @@
         public const string SuccessedTitle = "Congratulations!!";
         public const string FailedTitle = "I am sorry!!";
 
+        public const string ExtendClaimSuccess = "User has 5 more days!!";
+        public const string ExtendClaimFailed = "User extend method is failed!!";
+
         public static string SignUp(string userName) => userName + SignUpSuccess;
         public static string UserEdit(string userName) => userName + UserEditSuccess;
 
