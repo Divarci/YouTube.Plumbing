@@ -586,6 +586,28 @@ section {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
+.about .social {
+    text-align: center;    
+    background: #fff;
+    margin-top: 8px;
+}
+
+    .about .social a {
+        color: #919191;
+        transition: 0.3s;
+    }
+
+        .about .social a:hover {
+            color: #16df7e;
+        }
+
+    .about .social i {
+        font-size: 25px;
+        margin: 0 2px;
+    }
+
+
+
 .about .content h3 {
   font-weight: 700;
   font-size: 32px;
