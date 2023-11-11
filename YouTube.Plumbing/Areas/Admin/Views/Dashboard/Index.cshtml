@@ -1,8 +1,140 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Dashborad</h1>
+<section class="section dashboard">
+    <div class="row">
+        <!-- Left side columns -->
+
+        <div class="row">
+            <!-- Sales Card -->
+            <div class="col-xxl-4 col-md-6">
+                <div class="card info-card sales-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Services <span>| All Time</span></h5>
+
+                        <div class="d-flex align-items-center">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                <i class="bi bi-gear"></i>
+                            </div>
+                            <div class="ps-3">
+                                <h6>@ViewBag.Services</h6>
+                                <span class="text-muted small pt-2 ps-1">available services</span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div><!-- End Sales Card -->
+            <!-- Revenue Card -->
+            <div class="col-xxl-4 col-md-6">
+                <div class="card info-card revenue-card">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Team Members <span>| All Time</span></h5>
+
+                        <div class="d-flex align-items-center">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <div class="ps-3">
+                                <h6>@ViewBag.Teams</h6>
+                                <span class="text-muted small pt-2 ps-1">available team members</span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div><!-- End Revenue Card -->
+            <!-- Customers Card -->
+            <div class="col-xxl-4 col-md-6">
+
+                <div class="card info-card customers-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Testimonials <span>| All Time</span></h5>
+
+                        <div class="d-flex align-items-center">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                <i class="bi bi-chat-left-dots"></i>
+                            </div>
+                            <div class="ps-3">
+                                <h6>@ViewBag.Testimonals</h6>
+                                <span class="text-muted small pt-2 ps-1">testimonials we have</span>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div><!-- End Customers Card -->
+            <!-- Sales Card -->
+            <div class="col-xxl-4 col-md-6">
+                <div class="card info-card new-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Categories <span>| All Time</span></h5>
+
+                        <div class="d-flex align-items-center">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                <i class="bi bi-tags"></i>
+                            </div>
+                            <div class="ps-3">
+                                <h6>@ViewBag.Categories</h6>
+                                <span class="text-muted small pt-2 ps-1">different categories we have</span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div><!-- End Sales Card -->
+            <!-- Revenue Card -->
+            <div class="col-xxl-4 col-md-6">
+                <div class="card info-card newTwo-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Portfolios <span>| All Time</span></h5>
+
+                        <div class="d-flex align-items-center">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                <i class="bi bi-image-fill"></i>
+                            </div>
+                            <div class="ps-3">
+                                <h6>@ViewBag.Portfolios</h6>
+                                <span class="text-muted small pt-2 ps-1">portfolios we have</span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div><!-- End Revenue Card -->
+            <!-- Customers Card -->
+            <div class="col-xxl-4 col-md-6">
+
+                <div class="card info-card newThree-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Customers <span>| This Year</span></h5>
+
+                        <div class="d-flex align-items-center">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                <i class="bi bi-person-bounding-box"></i>
+                            </div>
+                            <div class="ps-3">
+                                <h6>@ViewBag.Users</h6>
+                                <span class="text-muted small pt-2 ps-1">customer worked with us</span>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div><!-- End Customers Card -->
+
+        </div>
+    </div>
+</section>
 

@@ -4,5 +4,22 @@
     Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+@if (User.IsInRole("SuperAdmin"))
+{
+    <div class="alert alert-success fade show fw-bolder text-center" role="alert">
+        WELCOME TO OUR COMPANY DASHBOARD as an ADMIN !!
+    </div>
+}
+else
+{
+
+
+    <div class="alert alert-info fade show fw-bolder text-center" role="alert">
+        WELCOME TO OUR COMPANY DASHBOARD !!
+    </div>
+
+}
+
+
+
 

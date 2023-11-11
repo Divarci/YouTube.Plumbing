@@ -49,6 +49,11 @@ namespace RepositoryLayer.Repositories.Concrete
             return await _dbSet.FindAsync(id);
         }
 
+        public async Task<int> GetAllCount()
+        {
+            return await _dbSet.CountAsync();
+        }
+
 
     }
 }

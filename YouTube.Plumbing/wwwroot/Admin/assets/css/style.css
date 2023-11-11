@@ -824,7 +824,18 @@ h6 {
     color: #4154f1;
     background: #f6f6fe;
 }
-
+.dashboard .new-card .card-icon {
+    color: #7204c8;
+    background: #c197fe;
+}
+.dashboard .newTwo-card .card-icon {
+    color: #6a6b0c;
+    background: #b0c87a;
+}
+.dashboard .newThree-card .card-icon {
+    color: #bd0707;
+    background: #f29c9c;
+}
 .dashboard .revenue-card .card-icon {
     color: #2eca6a;
     background: #e0f8e9;
