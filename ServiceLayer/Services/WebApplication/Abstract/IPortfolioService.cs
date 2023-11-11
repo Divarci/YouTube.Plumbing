@@ -10,5 +10,6 @@ namespace ServiceLayer.Services.WebApplication.Abstract
         Task DeletePortfolioAsync(int id);
         Task<PortfolioUpdateVM> GetPortfolioById(int id);
         Task UpdatePortfolioAsync(PortfolioUpdateVM request);
+        Task<List<PortfolioListForUI>> GetAllListForUIAsync();
     }
 }

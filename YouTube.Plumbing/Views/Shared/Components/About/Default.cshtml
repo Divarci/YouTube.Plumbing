@@ -1,0 +1,56 @@
+﻿@model List<AboutListForUI>
+
+@foreach (var item in Model)
+{
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-6 ">
+                    <img src="~/images/@item.FileName" class="img-fluid" alt="Plumbing Company">
+
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 content">
+                    <h3>@item.Header</h3>
+                    <p class="fst-italic">@item.Description</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- End About Section -->
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+        <div class="container">
+
+            <div class="row counters">
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-purecounter-start="0" data-purecounter-end=@item.Clients data-purecounter-duration="1" class="purecounter"></span>
+                    <p>Clients</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-purecounter-start="0" data-purecounter-end=@item.Projects data-purecounter-duration="1" class="purecounter"></span>
+                    <p>Projects</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-purecounter-start="0" data-purecounter-end=@item.HoursOfSupport data-purecounter-duration="1" class="purecounter"></span>
+                    <p>Hours Of Support</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-purecounter-start="0" data-purecounter-end=@item.HardWorkers data-purecounter-duration="1" class="purecounter"></span>
+                    <p>Hard Workers</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- End Counts Section -->
+}

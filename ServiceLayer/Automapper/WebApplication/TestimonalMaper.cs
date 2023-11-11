@@ -8,6 +8,7 @@ namespace ServiceLayer.Automapper.WebApplication
     {
         public TestimonalMaper()
         {
+            CreateMap<Testimonal, TestimonalListForUI>().ReverseMap();
             CreateMap<Testimonal, TestimonalListVM>().ReverseMap();
             CreateMap<Testimonal, TestimonalAddVM>().ReverseMap();
             CreateMap<Testimonal, TestimonalUpdateVM>().ReverseMap();

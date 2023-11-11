@@ -10,5 +10,6 @@ namespace ServiceLayer.Services.WebApplication.Abstract
         Task DeleteTeamAsync(int id);
         Task<TeamUpdateVM> GetTeamById(int id);
         Task UpdateTeamAsync(TeamUpdateVM request);
+        Task<List<TeamListForUI>> GetAllListForUIAsync();
     }
 }

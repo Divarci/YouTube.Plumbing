@@ -1,0 +1,6 @@
+add testimonial to navbar --
+add company social media links
+add popup for services
+delete style on pictures 
+delete text under contact
+have a look call to action

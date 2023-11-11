@@ -9,6 +9,7 @@ namespace ServiceLayer.Automapper.WebApplication
     {
         public ContactMapper()
         {
+            CreateMap<Contact, ContactListForUI>().ReverseMap();
             CreateMap<Contact, ContactListVM>().ReverseMap();
             CreateMap<Contact, ContactAddVM>().ReverseMap();
             CreateMap<Contact, ContactUpdateVM>().ReverseMap();

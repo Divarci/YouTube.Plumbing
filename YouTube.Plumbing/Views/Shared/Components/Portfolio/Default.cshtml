@@ -1,0 +1,30 @@
+﻿@model List<PortfolioListForUI>
+
+
+<!-- ======= Portfolio Section ======= -->
+<section id="portfolio" class="portfolio">
+    <div class="container">
+
+        <div class="section-title">
+            <span>Portfolio</span>
+            <h2>Portfolio</h2>
+        </div>
+
+       @await Component.InvokeAsync("Category")
+
+        <div class="row portfolio-container">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 portfolio-item filter-@item.Category.Name">
+                    <img src="~/images/@item.FileName" style="height:300px; width:auto;"class="img-fluid" alt="Portfolio of Plumbing">
+                    <div class="portfolio-info">
+                        <h4>@item.Title</h4>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+
+    </div>
+</section><!-- End Portfolio Section -->

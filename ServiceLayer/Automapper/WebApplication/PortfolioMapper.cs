@@ -8,6 +8,7 @@ namespace ServiceLayer.Automapper.WebApplication
     {
         public PortfolioMapper()
         {
+            CreateMap<Portfolio, PortfolioListForUI>().ReverseMap();
             CreateMap<Portfolio, PortfolioListVM>().ReverseMap();
             CreateMap<Portfolio, PortfolioAddVM>().ReverseMap();
             CreateMap<Portfolio, PortfolioUpdateVM>().ReverseMap();

@@ -9,5 +9,7 @@ namespace ServiceLayer.Services.WebApplication.Abstract
         Task DeleteAboutAsync(int id);
         Task<AboutUpdateVM> GetAboutById(int id);
         Task UpdateAboutAsync(AboutUpdateVM request);
+
+        Task<List<AboutListForUI>> GetAllListForUIAsync();
     }
 }

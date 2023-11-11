@@ -10,5 +10,6 @@ namespace ServiceLayer.Services.WebApplication.Abstract
         Task DeleteTestimonalAsync(int id);
         Task<TestimonalUpdateVM> GetTestimonalById(int id);
         Task UpdateTestimonalAsync(TestimonalUpdateVM request);
+        Task<List<TestimonalListForUI>> GetAllListForUIAsync();
     }
 }
