@@ -40,5 +40,5 @@ This combination of technologies enables the development of a robust, modular, a
 
 ## YouTube
 
- ⭕ [Click here to see YouTube videos]([https://youtube.com/playlist?list=PLUGOSPRUV32IAen0HJpwWKkmbFPAgihzo&si=He41aobDzJzCoiLz](https://www.youtube.com/playlist?list=PLUGOSPRUV32Ihj5ZBUoceHPuXlsRM94Ii)https://www.youtube.com/playlist?list=PLUGOSPRUV32Ihj5ZBUoceHPuXlsRM94Ii) 
+ ⭕ [Click here to see YouTube videos](https://youtube.com/playlist?list=PLUGOSPRUV32IAen0HJpwWKkmbFPAgihzo&si=He41aobDzJzCoiLz) 
  
